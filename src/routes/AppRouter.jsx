@@ -1,18 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NotFound from '../../src/components/notFound/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AppProvider from '../context/AppContext';
+import PublicRouter from './PublicRouter';
+import Register from '../pages/Register';
+import Login from '../pages/Login';
+import DashboardRouter from './DashboardRouter';
+import PrivateRouter from './PrivateRouter';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase/firebaseConfig';
 
 const AppRouter = () => {
+  const [cheking, setCheking] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(undefined);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.uid) {
+        setIsLoggedIn(true);
+
+      } else {
+        setIsLoggedIn(false);
+      }
+      setCheking(false);
+    });
+  }, [setIsLoggedIn, setCheking]);
+
+  if (cheking) {
+    return <h1>Espere....</h1>;
+  }
   return (
     <BrowserRouter>
-      <AppProvider>
-        <Routes>
-          {/* <Route path={"/"} element={} /> */}
-          {/* <Route path={"login"} element={<Navigate to="/" />} /> */}
+     <Routes>
+        <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Login />} />
+        </Route>
+        <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
+          <Route path="/*" element={<DashboardRouter />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AppProvider>
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }

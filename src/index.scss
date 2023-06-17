@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+// ************** COLORS ***************
+$mainColor: #FFE031;
+$darkColor: #414141;
+$grayColor: #A7A7A7;
+$bgGradient:  linear-gradient(180deg, #FFFEFA 0%, #FFE031 0%, #FFFEFA 0.01%, #FCFCFC 100%);
+$complementaryColor: #F2F2F2;
+
+// ************** TYPOGRAFY FONT ***************
+$typografyFont: 'Roboto', sans-serif;
+
+// ************** GENERAL STYLES ***************
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $typografyFont;
+}
