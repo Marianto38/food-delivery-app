@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+@import '../../../index.scss';
+.form {
+   // background-image: linear-gradient(rgb(23 7 12 / 80%), rgb(23 7 12 / 80%)), url(https://res.cloudinary.com/didyub2vb/image/upload/v1686111554/fondo-login2_dtm1q3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    color: $darkColor;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+}
+
+.form_content {
+
+
+    display: flex;
+    flex-direction: column;
+    color: $darkColor;
+    padding: 2rem;
+}
+
+.form {
+    &__figure {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    &__icon {
+        width: 100px;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-family: 'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
+        font-size: 1.5rem;
+
+        font-weight: bold;
+    }
+
+    &__title {
+        margin-top: 2rem;
+        text-align: justify;
+        font-size: 1.6rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        margin-bottom: .5rem;
+        &__register {
+            margin-bottom: 1.5rem;
+            text-align: start;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            font-weight: bold;
+        }
+
+        &__paragrapho {
+            font-size: 1rem;
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        color: $darkColor;
+    }
+
+    &__login {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        //border-bottom: 1px solid $darkColor;
+        font-size: 1.3rem;
+        width: auto;
+
+        &__icon {
+            font-size: 1rem;
+            margin-right: 24px;
+            padding-bottom: .5rem;
+            // padding: .5rem;
+            // margin-bottom: 1rem;
+        }
+
+        &__errors {
+            max-width: 257px;
+            font-size: 10px;
+        }
+
+        &__input {
+            display: flex;
+            background-color: transparent;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid $darkColor;
+            border-radius: 0;
+            padding: 0;
+            color: $darkColor;
+            min-width: 327px;
+            padding-bottom: 2px;
+            font-size: 14px;
+
+            .form-control {
+                background: transparent;
+                color: $grayColor;
+            }
+
+            &__input:active {
+                background-color: transparent;
+                color: $darkColor;
+            }
+
+            &:focus {
+                outline: none;
+                background-color: transparent;
+                color: $darkColor;
+            }
+
+            &::placeholder {
+                color: $darkColor;
+            }
+        }
+
+        &__btn {
+            background-color: $darkColor;
+            color: $darkColor;
+            border: none;
+            width: 100%;
+            padding: .8rem;
+            border-color: none;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            color: gray;
+
+            &:focus,
+            &:hover {
+                outline: none;
+               // background-color: #f7066c;
+                border: none;
+                color: $darkColor;
+            }
+        }
+
+        &__registration {
+            text-align: center;
+            cursor: pointer;
+
+            &__reestablecer {
+                font-size: 1.2rem;
+            }
+
+            &__log {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-top: 2.5rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.ant-upload-list {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+// .form-control {
+//     background-color: transparent;
+//     background: transparent;
+// }
+
+.form-label {
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+
+// .form__password {
+//     display: flex;
+//     flex-direction: row;
+// }
