@@ -9,6 +9,8 @@ import PrivateRouter from './PrivateRouter';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase/firebaseConfig';
 import Home from '../pages/Home';
+import Restaurant from '../pages/Restaurant';
+import Dish from '../pages/Dish';
 
 const AppRouter = () => {
   const [cheking, setCheking] = useState(true);
@@ -35,6 +37,8 @@ const AppRouter = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/dish" element={<Dish />} />
         </Route>
         <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
           <Route path="/*" element={<DashboardRouter />} />

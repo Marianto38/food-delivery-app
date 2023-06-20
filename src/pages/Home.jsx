@@ -3,6 +3,7 @@ import Header from '../components/home/header/Header'
 import '../components/home/styleHome.scss'
 import Restaurants from '../components/restaurants/Restaurants'
 import Categories from '../components/restaurants/categories/Categories'
+import Footer from '../components/home/footer/Footer'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Categories/>
         <Restaurants/>
       </div>
+      <Footer/>
     </section>
   )
 }

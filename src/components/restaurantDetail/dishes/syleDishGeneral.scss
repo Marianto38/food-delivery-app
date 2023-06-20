@@ -1,0 +1,21 @@
+@import '../../../index.scss';
+
+.dishgeneral{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    figure{
+        margin: 0;
+    }
+    img{
+        border-radius: 10px;
+    }
+    &__title{
+        font-size: 15px;
+        font-weight: 400;
+    }
+    &__price{
+        color: $grayColor;
+        font-size: 15px;
+    }
+}

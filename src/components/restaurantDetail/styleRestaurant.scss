@@ -1,0 +1,67 @@
+@import '../../index.scss';
+
+.restaurant {
+  background: linear-gradient(
+    180deg,
+    #fffefa 0%,
+    #ffe031 0%,
+    #fffefa 0.01%,
+    #fcfcfc 100%
+  );
+  margin: 0 auto;
+  width: 90%;
+  &__header {
+    margin-top: 10px;
+  }
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon {
+    float: left;
+  }
+  &__review, &__detail{
+    display: flex;
+  }
+  &__detail{
+    gap: 10px;
+    margin-bottom: 13px;
+  }
+  &__info{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  &__image{
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    border-radius: 10px;
+  }
+  &__title{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  &__description{
+    font-size: 13px;
+    text-align: justify;
+  }
+  &__review{
+    justify-content: space-between;
+  }
+  &__time{
+    background: #F2F2F2;
+    border-radius: 4px;
+    font-weight: 300;
+    font-size: 12px;
+    color: $darkColor;
+    border: none;
+    padding: 5px;
+  }
+  .dishes{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+}
