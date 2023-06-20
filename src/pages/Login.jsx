@@ -17,72 +17,43 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 //import Swal from 'sweetalert2';
 import '../components/login/stylesLogin/stylesLogin.scss'
 import BtnCta from '../components/common/btnCta/BtnCta';
-import { loginActionAsync } from '../redux/actions/userActions';
+import { actionLoginGoogleOrFacebook, loginActionAsync } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
+import { loginProvider } from '../services/dates';
 
 
 
 const Login = () => {
 
-  const navigate = useNavigate();
-  // const [users, setUsers] = useState([{
-  //   username: "maria@gmail.com",
-  //   password: "Password1!"
-  // }]);
-  // const { setUserLogged, setIsLogged } = useState('');
+  const handleLoginGoogleOrFacebook = (provider) => {
+    dispatch(actionLoginGoogleOrFacebook(provider));
+  };
 
+  const navigate = useNavigate();
 
   const schema = yup.object().shape({
-    email: yup.string().required('Email is required').email('Ingrese un correo electrónico válido'),
-    password: yup.string('Password is required').required().min(8, 'Password must be at least 8 characters').max(20, 'Password must be at most 20 characters')
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
-      ),
+    email: yup
+      .string()
+      .email("Debe ingresar un email")
+      .required("Este campo es obligatorio"),
+    password: yup
+      .string()
+      .required("Este campo es obligatorio")
   });
-
-
-  // useEffect(() => {
-  //   getUsers().then((response) => {
-  //     console.log(response)
-  //     setUsers(response)
-  //   })
-  // }, [])
-
-
-  // const validateUser = (values) => {
-  //   console.log(users)
-  //   return users.some((user) => user.username === values.username && user.password === values.password);
-  // }
-
-  // const userFinded = (values) => {
-  //   const user1 = users.find((user) => user.username === values.username && user.password === values.password);
-  //   setUserLogged(user1);
-  // }
 
   const handleToRegister = () => {
     navigate("/register")
   };
 
-   const dispatch = useDispatch()
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver: yupResolver(schema),
-  // });
-
+  const dispatch = useDispatch()
 
   const handleLogin = (values) => {
     console.log(values);
-   dispatch(loginActionAsync(values.email, values.password));
+    dispatch(loginActionAsync(values.email, values.password));
   }
 
   return (
@@ -191,7 +162,20 @@ const Login = () => {
                       </Row>
                     </Form.Group>
 
-                    <BtnCta cta={'Login'} bgColor={'#FFE031'} type={'submit'}/>
+                    <BtnCta cta={'Login'} bgColor={'#FFE031'} type={'submit'} />
+                    <div style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
+                      {loginProvider.map((provider, index) => (
+                        <img
+                          key={index}
+                          src={provider.image}
+                          alt={provider.name}
+                          style={{ width: "40px", cursor: "pointer" }}
+                          onClick={() => {
+                            handleLoginGoogleOrFacebook(provider.provider);
+                          }}
+                        />
+                      ))}
+                    </div>
                     <div className='form__login__registration'>
                       <p className='mb-3 mt-3'>¿Don't have an account?</p>
                       <p className='form__login__registration__log mt-0' onClick={handleToRegister}>Create an account</p>
