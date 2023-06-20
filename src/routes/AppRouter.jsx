@@ -8,6 +8,7 @@ import DashboardRouter from './DashboardRouter';
 import PrivateRouter from './PrivateRouter';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase/firebaseConfig';
+import StepersLogin from '../components/stepersLogin/StepersLogin';
 
 const AppRouter = () => {
   const [cheking, setCheking] = useState(true);
@@ -33,7 +34,8 @@ const AppRouter = () => {
      <Routes>
         <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<StepersLogin />} />
         </Route>
         <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
           <Route path="/*" element={<DashboardRouter />} />

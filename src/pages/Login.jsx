@@ -8,8 +8,8 @@
 
 // export default Login
 
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import React from 'react';
+//import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -17,26 +17,29 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import '../components/login/stylesLogin/stylesLogin.scss'
 import BtnCta from '../components/common/btnCta/BtnCta';
+import { loginActionAsync } from '../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
+
 
 
 const Login = () => {
 
   const navigate = useNavigate();
-  const [users, setUsers] = useState([{
-    username: "maria@gmail.com",
-    password: "Password1!"
-  }]);
-  const { setUserLogged, setIsLogged } = useState('');
+  // const [users, setUsers] = useState([{
+  //   username: "maria@gmail.com",
+  //   password: "Password1!"
+  // }]);
+  // const { setUserLogged, setIsLogged } = useState('');
 
 
   const schema = yup.object().shape({
-    username: yup.string().required('Email is required').email('Ingrese un correo electrónico válido'),
+    email: yup.string().required('Email is required').email('Ingrese un correo electrónico válido'),
     password: yup.string('Password is required').required().min(8, 'Password must be at least 8 characters').max(20, 'Password must be at most 20 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
@@ -53,20 +56,34 @@ const Login = () => {
   // }, [])
 
 
-  const validateUser = (values) => {
-    console.log(users)
-    return users.some((user) => user.username === values.username && user.password === values.password);
-  }
+  // const validateUser = (values) => {
+  //   console.log(users)
+  //   return users.some((user) => user.username === values.username && user.password === values.password);
+  // }
 
-  const userFinded = (values) => {
-    const user1 = users.find((user) => user.username === values.username && user.password === values.password);
-    setUserLogged(user1);
-  }
+  // const userFinded = (values) => {
+  //   const user1 = users.find((user) => user.username === values.username && user.password === values.password);
+  //   setUserLogged(user1);
+  // }
 
   const handleToRegister = () => {
     navigate("/register")
   };
 
+   const dispatch = useDispatch()
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   resolver: yupResolver(schema),
+  // });
+
+
+  const handleLogin = (values) => {
+    console.log(values);
+   dispatch(loginActionAsync(values.email, values.password));
+  }
 
   return (
     <>
@@ -82,46 +99,47 @@ const Login = () => {
                 email to start ordering</p>
               <Formik
                 validationSchema={schema}
-                onSubmit={(values) => {
+                onSubmit={handleLogin}
+                // onSubmit={(values) => {
 
-                  const isValidUser = validateUser(values);
-                  console.log(isValidUser);
-                  if (isValidUser) {
-                    setIsLogged(true)
-                    userFinded(values);
-                    const Toast = Swal.mixin({
-                      toast: true,
-                      position: 'top-end',
-                      showConfirmButton: false,
-                      timer: 3000,
-                      timerProgressBar: true,
-                      didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                      }
-                    })
+                //   const isValidUser = validateUser(values);
+                //   console.log(isValidUser);
+                //   if (isValidUser) {
+                //     setIsLogged(true)
+                //     userFinded(values);
+                //     const Toast = Swal.mixin({
+                //       toast: true,
+                //       position: 'top-end',
+                //       showConfirmButton: false,
+                //       timer: 3000,
+                //       timerProgressBar: true,
+                //       didOpen: (toast) => {
+                //         toast.addEventListener('mouseenter', Swal.stopTimer)
+                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+                //       }
+                //     })
 
-                    Toast.fire({
-                      icon: 'success',
-                      title: '¡Inicio de sesión exitoso!'
-                    }).then(() => {
-                      navigate('/home');
-                    });
+                //     Toast.fire({
+                //       icon: 'success',
+                //       title: '¡Inicio de sesión exitoso!'
+                //     }).then(() => {
+                //       navigate('/home');
+                //     });
 
-                  } else {
-                    Swal.fire({
-                      position: 'top-end',
-                      icon: 'error',
-                      title: '¡Datos incorrectos, Por favor intentalo nuevamente!',
-                      showConfirmButton: false,
-                      timer: 1500
-                    })
-                  }
+                //   } else {
+                //     Swal.fire({
+                //       position: 'top-end',
+                //       icon: 'error',
+                //       title: '¡Datos incorrectos, Por favor intentalo nuevamente!',
+                //       showConfirmButton: false,
+                //       timer: 1500
+                //     })
+                //   }
 
-                }}
+                // }}
 
                 initialValues={{
-                  username: '',
+                  email: '',
                   password: '',
                 }}
               >
@@ -134,18 +152,18 @@ const Login = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                               type="email"
-                              name="username"
+                              name="email"
                               placeholder='example@gmail.com'
-                              value={values.username}
+                              value={values.email}
                               onChange={handleChange}
-                              isValid={touched.username && !errors.username}
-                              isInvalid={!!errors.username}
+                              isValid={touched.email && !errors.email}
+                              isInvalid={!!errors.email}
                               className='form__login__input'
                               autoComplete="off"
                             />
                             <Form.Control.Feedback className='form__login__errors'>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid" className='form__login__errors'>
-                              {errors.username}
+                              {errors.email}
                             </Form.Control.Feedback>
                           </Form.Group>
                         </InputGroup>

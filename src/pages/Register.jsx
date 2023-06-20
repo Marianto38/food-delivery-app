@@ -225,7 +225,7 @@ const Register = () => {
                           </div>
                         </Row>
 
-                        <Row className="mb-5 form__login" >
+                        <Row className="mb-3 form__login" >
                           <div >
                             <InputGroup className="mb-1">
                               <Form.Group controlId="validationFormik04">

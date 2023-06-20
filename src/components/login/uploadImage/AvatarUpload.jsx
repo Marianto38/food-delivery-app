@@ -32,8 +32,8 @@ const AvatarUpload = ({ setAvatar }) => {
 
     const uploadButton = (
         <div>
-            <PlusOutlined style={{ color:'#fff' }} />
-            <div style={{ marginTop: 8, color:'#fff' }}>AVATAR</div>
+            <PlusOutlined style={{ color:'dark' }} />
+            <div style={{ marginTop: 8, color:'dark' }}>AVATAR</div>
         </div>
     );
 
@@ -53,7 +53,6 @@ const AvatarUpload = ({ setAvatar }) => {
                 }
             );
 
-            console.log(response.data);
             console.log(response.data.url);
 
             const avatarUrlData = response.data.url;
