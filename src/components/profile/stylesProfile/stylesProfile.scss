@@ -1,0 +1,17 @@
+@import '../../../index.scss';
+
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+    background-color: $complementaryColor !important;
+    border-radius: 10px !important;
+ //   margin-bottom: 1rem !important;
+}
+
+// .css-1elwnq4-MuiPaper-root-MuiAccordion-root:last-of-type {
+//     background-color: $complementaryColor !important;
+//     border-radius: 10px !important;
+//     margin-bottom: 1rem !important;
+// }
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    background-color: transparent;
+    border: none;
+}
