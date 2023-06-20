@@ -1,0 +1,13 @@
+@import "../../index.scss";
+
+.home{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    .restaurants__title{
+        color: $darkColor;
+        font-size: 15px;
+    }
+}

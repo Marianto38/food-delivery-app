@@ -8,6 +8,7 @@ import DashboardRouter from './DashboardRouter';
 import PrivateRouter from './PrivateRouter';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase/firebaseConfig';
+import Home from '../pages/Home';
 
 const AppRouter = () => {
   const [cheking, setCheking] = useState(true);
@@ -17,7 +18,6 @@ const AppRouter = () => {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
         setIsLoggedIn(true);
-
       } else {
         setIsLoggedIn(false);
       }
@@ -34,6 +34,7 @@ const AppRouter = () => {
         <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
         </Route>
         <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
           <Route path="/*" element={<DashboardRouter />} />

@@ -1,8 +1,15 @@
 import React from 'react'
+import RestaurantCard from './card/RestaurantCard'
+import './styleRestaurants.scss'
 
 const Restaurants = () => {
   return (
-    <div>Restaurants</div>
+    <div className='restaurants'>
+      <RestaurantCard/>
+      <RestaurantCard/>
+      <RestaurantCard/>
+      <RestaurantCard/>
+    </div>
   )
 }
 

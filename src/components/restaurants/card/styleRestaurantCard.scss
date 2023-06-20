@@ -1,0 +1,20 @@
+@import '../../../index.scss';
+
+.cardRestaurant{
+    display: flex;
+    gap: 1rem;
+    img{
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+        border-radius: 10px;
+    }
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // color: $darkColor;
+        :last-child{
+            // color: $grayColor;
+            font-size: 14px;
+        }
+    }
+}
