@@ -35,7 +35,7 @@ export const inputList = [
   export const loginProvider = [
     {
       name: "google",
-      image: "https://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png",
+      image: "https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png",
       provider: google,
     },
     {
