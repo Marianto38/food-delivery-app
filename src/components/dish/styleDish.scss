@@ -1,0 +1,74 @@
+@import '../../index.scss';
+.dish{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__time{
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    &__image{
+        margin: 0;
+    }
+    &__bottom{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 auto;
+        width: 90%;
+    }
+    &__description{
+        text-align: justify;
+        width: 292px;
+        color: $darkColor;
+        font-size: 15px;
+        line-height: 16px;
+        letter-spacing: -0.3px;
+    }
+    &__title{
+        font-size: 20px;
+        font-weight: 500;
+        color: $darkColor;
+    }
+    &__iconTime{
+        margin: 0;
+    }
+    &__minutes{
+        font-size: 12px;
+        color: $darkColor;
+    }
+    &__aditional{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 90%;
+        gap: 8px;
+    }
+    &__ingredients{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &__first, &__second, &__third{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        :last-child{
+            margin-left: auto;
+        }
+    }
+    .aditional__title{
+        color: $grayColor;
+        font-weight: 400;
+    }
+    .ingredient{
+        letter-spacing: -0.3px;
+        color: $darkColor;
+    }
+}

@@ -1,0 +1,62 @@
+@import "../../../index.scss";
+
+.header{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    &__icon{
+        border-radius: 50%;
+    }
+    &__left{
+        display: flex;
+        gap: 12px;
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        :first-child{
+            color: $mainColor;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        :last-child{
+            color: $darkColor;
+            font-size: 15px;
+        }
+    }
+    &__image{
+        border-radius: 50%;
+    }
+    .carousel{
+        max-height: 300px;
+        overflow: hidden;
+        border-radius: 10px;
+        @media (max-width: 768px) {
+            height: 200px; 
+          }
+        
+          @media (max-width: 576px) {
+            height: 150px;
+          }
+    }
+    .carousel__item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        img{
+            object-fit: cover;
+            width: 100%;
+            max-height: 130px;
+            object-position: top left;
+            // border-radius: 20px;
+        }
+    }
+}
+
