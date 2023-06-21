@@ -13,7 +13,7 @@ const BtnCta = ({cta, bgColor, navigateTo, type }) => {
       <button onClick={handleToHome} type={type}
       style={{
             width:'100%', 
-            height:'3.5rem',
+            height:'44px',
             backgroundColor:`${bgColor}`,
             border: 'none',
             borderRadius: '10px'

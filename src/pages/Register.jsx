@@ -8,15 +8,19 @@ import { Formik } from 'formik';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useNavigate } from 'react-router-dom';
 import BtnCta from '../components/common/btnCta/BtnCta';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerActionAsync } from '../redux/actions/userActions';
 import AvatarUpload from '../components/login/uploadImage/AvatarUpload';
 
 const Register = () => {
 
+  const { user}   = useSelector((store) => store.user);
+  console.log(user);
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState("");
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Por favor ingresar su nombre"),
@@ -72,18 +76,18 @@ const Register = () => {
                 validationSchema={schema}
                 onSubmit={handleCreateUser}
                 initialValues={{
-                  email: '',
-                  avatar: '',
-                  fullName: '',
+                  email: "",
+                  avatar: "",
+                  fullName: "",
                   password: '',
-                  birthday: '',
-                  phone: '',
+                  birthday: "",
+                  phone: "",
                 }}
               >
                 {({ handleSubmit, handleChange, values, touched, errors }) => (
                   <Form noValidate onSubmit={handleSubmit} >
 
-                    <AvatarUpload setAvatar={setAvatar} className='avatar__upload' />
+                    <AvatarUpload setAvatar={setAvatar} imageUrl={""} className='avatar__upload' />
 
                     <Row className="mb-1 form__login" >
 

@@ -1,15 +1,4 @@
-// import React from 'react'
-
-// const Login = () => {
-//   return (
-//     <div>Login</div>
-//   )
-// }
-
-// export default Login
-
 import React from 'react';
-//import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -18,7 +7,6 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useNavigate } from 'react-router-dom';
-//import Swal from 'sweetalert2';
 import '../components/login/stylesLogin/stylesLogin.scss'
 import BtnCta from '../components/common/btnCta/BtnCta';
 import { actionLoginGoogleOrFacebook, loginActionAsync } from '../redux/actions/userActions';
@@ -71,44 +59,6 @@ const Login = () => {
               <Formik
                 validationSchema={schema}
                 onSubmit={handleLogin}
-                // onSubmit={(values) => {
-
-                //   const isValidUser = validateUser(values);
-                //   console.log(isValidUser);
-                //   if (isValidUser) {
-                //     setIsLogged(true)
-                //     userFinded(values);
-                //     const Toast = Swal.mixin({
-                //       toast: true,
-                //       position: 'top-end',
-                //       showConfirmButton: false,
-                //       timer: 3000,
-                //       timerProgressBar: true,
-                //       didOpen: (toast) => {
-                //         toast.addEventListener('mouseenter', Swal.stopTimer)
-                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                //       }
-                //     })
-
-                //     Toast.fire({
-                //       icon: 'success',
-                //       title: '¡Inicio de sesión exitoso!'
-                //     }).then(() => {
-                //       navigate('/home');
-                //     });
-
-                //   } else {
-                //     Swal.fire({
-                //       position: 'top-end',
-                //       icon: 'error',
-                //       title: '¡Datos incorrectos, Por favor intentalo nuevamente!',
-                //       showConfirmButton: false,
-                //       timer: 1500
-                //     })
-                //   }
-
-                // }}
-
                 initialValues={{
                   email: '',
                   password: '',
@@ -163,7 +113,7 @@ const Login = () => {
                     </Form.Group>
 
                     <BtnCta cta={'Login'} bgColor={'#FFE031'} type={'submit'} />
-                    <div style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
+                    <div style={{ display: "flex", gap: "20px", marginTop: "20px", justifyContent:'center' }}>
                       {loginProvider.map((provider, index) => (
                         <img
                           key={index}

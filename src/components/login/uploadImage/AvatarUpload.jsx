@@ -2,6 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import { useState } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -11,11 +12,21 @@ const getBase64 = (file) =>
         reader.onerror = (error) => reject(error);
     });
 
-const AvatarUpload = ({ setAvatar }) => {
+const AvatarUpload = ({ setAvatar, imageUrl }) => {
+
+    const [fileList, setFileList] = useState(imageUrl ? [{ url: imageUrl }] : []);
+
+   
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
-    const [fileList, setFileList] = useState([]);
+    // const [fileList, setFileList] = useState([]);
+
+    useEffect(() => {
+        if (imageUrl) {
+          setFileList([{ url: imageUrl }]);
+        }
+      }, [imageUrl]);
 
     const handleCancel = () => setPreviewOpen(false);
 

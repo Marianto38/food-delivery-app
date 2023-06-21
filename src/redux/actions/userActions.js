@@ -204,3 +204,33 @@ export const actionLoginGoogleOrFacebook = (provider) => {
       });
   };
 };
+
+export const updateUserAsync = (user, displayName, photoURL, phone, birthday) => {
+  return async (dispatch) => {
+    try {
+      await updateProfile(user, {
+        displayName: displayName,
+        photoURL: photoURL,
+        phoneNumber: phone,
+        birthday: birthday
+      });
+
+      dispatch(updateUserSync({ displayName, photoURL, phone, birthday }, null));
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        updateUserSync({}, { code: error.code, message: error.message })
+      );
+    }
+  };
+};
+
+const updateUserSync = (updatedUser, error) => {
+  return {
+    type: userTypes.UPDATE_USER,
+    payload: {
+      user: updatedUser,
+      error: error,
+    },
+  };
+};

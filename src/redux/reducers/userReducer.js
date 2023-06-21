@@ -9,7 +9,7 @@ const initialValue = {
 const userReducer = (state = initialValue, action) => {
     switch (action.type) {
         case userTypes.CREATE_USER:
-            
+
             return {
                 ...state,
                 user: {
@@ -24,6 +24,13 @@ const userReducer = (state = initialValue, action) => {
                 error: action.payload
             }
         case userTypes.LOGGIN_USER:
+            return {
+                ...state,
+                user: {
+                    ...action.payload
+                }
+            }
+        case userTypes.UPDATE_USER:
             return {
                 ...state,
                 user: {
