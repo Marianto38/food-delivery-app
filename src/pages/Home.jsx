@@ -8,31 +8,20 @@ import '../components/home/styleHome.scss'
 import Restaurants from '../components/restaurants/Restaurants'
 import Categories from '../components/restaurants/categories/Categories'
 import Footer from '../components/home/footer/Footer'
+import { useEffect } from "react";
+import { actionGetRestaurantsAsync } from "../redux/actions/restaurantsActions";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const { user}   = useSelector((store) => store.user);
-  console.log(user);
+  const { restaurants}   = useSelector((store) => store.restaurants);
+  console.log(restaurants)
 
-  const handleToProfile = () => {
-    navigate('/profile')
-  }
+  useEffect(() => {
+    dispatch(actionGetRestaurantsAsync());
+  }, [dispatch]);
 
   return (
-    <>
-    <div>
-      Home
-      <div>
-         <Image src={user?.avatar} roundedCircle />
-        <h2>{user?.fullName}</h2> 
-      </div>
-      <button onClick={() => dispatch(logoutActionAsync())}>
-        Cerrar Sesión
-      </button>
-      <button onClick={handleToProfile}> profile</button>
-    </div>
     <section className='home'>
       <div className="home__header">
         <Header/>
@@ -40,11 +29,10 @@ const Home = () => {
       <div className="home__restaurants">
         <p className='restaurants__title'>Restaurants and cafes</p>
         <Categories/>
-        <Restaurants/>
+        <Restaurants restaurants={restaurants}/>
       </div>
       <Footer/>
     </section>
-    </>
   );
 };
 

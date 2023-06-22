@@ -10,9 +10,6 @@ import { capitalizeFirstLetter } from '../utils/utils';
 import Switch from '@mui/material/Switch';
 import Footer from '../components/home/footer/Footer';
 
-
-
-
 const LinkProfile = ({ iconProfile, text, iconState, navigateTo }) => {
 
   const navigate = useNavigate();
@@ -101,7 +98,6 @@ const Profile = () => {
           <Footer/>
     </>
   );
-
 }
 
-export default Profile;
+export default Profile; 

@@ -12,10 +12,28 @@
     }
     &__icon{
         border-radius: 50%;
+        width: 57px;
+        height: 57px;
     }
     &__left{
         display: flex;
         gap: 12px;
+    }
+    &__right{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        figure{
+            margin: 0;
+        }
+        button{
+            border: none;
+            color: $darkColor;
+            padding: 5px;
+            border-radius: 9px;
+            font-size: 12px;
+        }
     }
     &__text{
         display: flex;
