@@ -16,11 +16,11 @@ export const restaurantsReducer = (state = initialState, action) => {
     //     ...state,
     //     paletas: [...state.paletas, action.payload],
     //   };
-    // case paletasTypes.PALETAS_FILTERED:
-    //   return {
-    //     ...state,
-    //     paletas: action.payload.paletas,
-    //   };
+    case restaurantsTypes.RESTAURANTS_FILTERED:
+      return {
+        ...state,
+        restaurants: action.payload.restaurants,
+      };
     default:
       return state;
   }

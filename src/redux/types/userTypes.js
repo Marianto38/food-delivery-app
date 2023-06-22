@@ -8,4 +8,5 @@ export const userTypes = {
 
 export const restaurantsTypes = {
   RESTAURANTS_GET: "RESTAURANTS_GET",
+  RESTAURANTS_FILTERED: 'RESTAURANTS_FILTERED'
 };

@@ -44,3 +44,26 @@ export const inputList = [
       provider: facebook,
     },
   ];
+
+  export const category = [
+    {
+      label: "Fast food",
+      emoji: "🍔",
+      value: 1
+    },
+    {
+      label: "Pizza",
+      emoji: "🍕",
+      value: 2
+    },
+    {
+      label: "Salads",
+      emoji: "🥗",
+      value: 3
+    },
+    {
+      label: "Coffe",
+      emoji: "☕",
+      value: 4
+    }
+  ];

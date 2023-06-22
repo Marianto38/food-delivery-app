@@ -2,19 +2,39 @@ import React from 'react';
 import IconTime from '../assets/icons/time.png';
 import '../components/dish/styleDish.scss';
 import Checkbox from '@mui/material/Checkbox';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const Dish = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+  const { restaurants } = useSelector((store) => store.restaurants);
+  console.log(restaurants);
+  
+  const { id } = useParams();
+  console.log(id)
+  let dishFound = null;
+  
+  restaurants.forEach((restaurant) => {
+    const found = restaurant.dishes.find((item) => item.id === id);
+    if (found) {
+      dishFound = found;
+      return; // Salir del bucle forEach si se encuentra el elemento
+    }
+  });
+  
+  console.log(dishFound);
+
   return (
     <div className='dish'>
       <div className="dish__top">
         <figure className='dish__image'>
-          <img src="https://res.cloudinary.com/didyub2vb/image/upload/v1687303112/Img_2_tj0xtf.png" alt=""/>
+          <img src={dishFound.image} alt={dishFound.name}/>
         </figure>
       </div>
       <div className="dish__bottom">
         <div className='dish__header'>
-          <span className='dish__title'>Caesar salad without sauge</span>
+          <span className='dish__title'>{dishFound.name}</span>
           <div className="dish__time">
             <figure className='dish__iconTime'>
               <img src={IconTime} alt="" />
@@ -22,7 +42,7 @@ const Dish = () => {
             <span className='dish__minutes'>15-20 min</span>
           </div>
         </div>
-        <span className="dish__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</span>
+        <span className="dish__description">{dishFound.description}</span>
       </div>
       <div className="dish__aditional">
         <span className="aditional__title">Additional Ingredients</span>

@@ -34,3 +34,34 @@ const actionGetRestaurantsSync = (restaurants) => {
     },
   };
 };
+
+export const actionFilterRestaurantsAsync = (searchParam, searchValue) => {
+  return async (dispatch) => {
+    const restaurantsCollection = collection(dataBase, collectionName);
+    const q = query(restaurantsCollection, where(searchParam, "==", searchValue));
+    const restaurants = [];
+    try {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        restaurants.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+      console.log(restaurants)
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(actionFilterRestaurantsSync(restaurants));
+    }
+  };
+};
+
+const actionFilterRestaurantsSync = (restaurants) => {
+  return {
+    type: restaurantsTypes.RESTAURANTS_FILTERED,
+    payload: {
+      restaurants: restaurants,
+    },
+  };
+};
