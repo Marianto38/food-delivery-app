@@ -4,6 +4,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signInWithPopup,
+  setPersistence, browserSessionPersistence,
 } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
 import { userTypes } from "../types/userTypes";
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2';
 export const registerActionAsync = ({ email, password, fullName, avatar, birthday, phone, address }) => {
   return async (dispatch) => {
     try {
+      //await setPersistence(auth, browserSessionPersistence)
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,

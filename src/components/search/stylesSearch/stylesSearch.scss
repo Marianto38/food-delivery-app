@@ -1,0 +1,23 @@
+@import '../../../index.scss';
+
+.container__search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $complementaryColor;
+    padding: 0 1rem 0 1rem;
+    border-radius: 10px;
+    &__icon {
+        margin-left: 1rem;
+    }
+    .form-control {
+        background-color: transparent !important;
+        border: none;
+    }
+    &__ppl {
+        padding: 1rem;
+    }
+    &__recentSearch {
+        margin-top: 1rem;
+    }
+}
