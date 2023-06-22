@@ -111,7 +111,6 @@ export const actionFilterAsync = (searchParam) => {
 };
 
 
-
 //FUNCIÓN PARA MOSTRAR LAS ULTIMAS CONSULTAS EN SEARCH
 
 export const actionSetRecentQueries = (query) => {

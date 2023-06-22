@@ -21,7 +21,7 @@ const Header = () => {
           </figure>
           <div className="header__text">
             <span>Deliver To</span>
-            <span>882 Well St, New-York</span>
+            <span>{user?.address ? user?.address : ("882 Well St, New-York") }</span>
           </div>
         </div>
         <div className="header__right">

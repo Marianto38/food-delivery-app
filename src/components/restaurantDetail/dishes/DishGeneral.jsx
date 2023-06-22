@@ -1,21 +1,26 @@
 import React from 'react';
 import './syleDishGeneral.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const DishGeneral = () => {
+const DishGeneral = ({restaurantsFound}) => {
+
   const navigate = useNavigate();
-
-  const handleToDish = () => {
-    navigate("/dish");
+  const handleToDish = (dishId) => {
+    navigate(`/dish/${dishId}`);
   }
+  
   return (
-    <div className='dishgeneral' onClick={handleToDish}>
+    <>
+    {restaurantsFound.dishes.map((dish) => (
+      <div className='dishgeneral' onClick={()=> handleToDish(dish.id)} key={dish.id}>
         <figure>
-            <img src="https://res.cloudinary.com/dd8l8bm6q/image/upload/v1687033445/deliveryApp/zqoifj5ftfypzbrs0d6w.png" alt="Plato" />
+          <img src={dish.image} alt={dish.name} />
         </figure>
-        <span className="dishgeneral__title">Bolognese salad</span>
-        <span className="dishgeneral__price">$ 14.45</span>
-    </div>
+        <span className="dishgeneral__title">{dish.name}</span>
+        <span className="dishgeneral__price">$ {dish.price}</span>
+      </div>
+    ))}
+  </>
   )
 }
 
