@@ -3,4 +3,5 @@ export const userTypes = {
     LOGGIN_USER: "LOGGIN_USER",
     LOGOUT_USER: "LOGOUT_USER",
     UPDATE_USER: "UPDATE_USER",
+    UPDATE_METHODS: "UPDATE_METHODS"
   };

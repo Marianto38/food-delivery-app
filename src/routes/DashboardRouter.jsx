@@ -13,6 +13,8 @@ import Profile from "../pages/Profile";
 import ProfileEdit from "../pages/ProfileEdit";
 import PaymentMethod from "../pages/PaymentMethod";
 import AddNewCard from "../pages/AddNewCard";
+import Restaurant from "../pages/Restaurant";
+import DishGeneral from "../components/restaurantDetail/dishes/DishGeneral";
 
 const DashboardRouter = () => {
   return (
@@ -21,6 +23,8 @@ const DashboardRouter = () => {
       <Route path={"/search"} element={<Search/>} />
       <Route path={"/ordershistory"} element={<OrdersHistory/>} />
       <Route path={"/order/:id"} element={<Order/>} />
+      <Route path={"restaurant"} element={<Restaurant/>} />
+      <Route path={"dish"} element={<DishGeneral/>} />
       {/* <Route path={"/restaurant/:id"} element={<Restaurant/>}>
         <Route path={"/dish/:id"} element={<Dish/>}/>
       </Route> */}

@@ -1,0 +1,26 @@
+@import '../../../index.scss';
+
+
+.container__summary {
+    display: flex;
+    flex-direction: column;
+    // padding: 1rem;
+    font-size: 14px;
+    margin-bottom: 1rem;
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__line {
+        border-bottom: 1px solid $darkColor;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    &__priceTotal {
+        font-size: 17px;
+    }
+}
