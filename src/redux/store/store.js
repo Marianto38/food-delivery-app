@@ -3,6 +3,7 @@ import userReducer from "../reducers/userReducer";
 
 const reducer = {
     user: userReducer,
+    paymentMethods: userReducer,
 };
 
 const store = configureStore({

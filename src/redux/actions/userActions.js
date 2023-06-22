@@ -10,7 +10,7 @@ import { userTypes } from "../types/userTypes";
 import Swal from 'sweetalert2';
 
 
-export const registerActionAsync = ({ email, password, fullName, avatar, birthday, phone }) => {
+export const registerActionAsync = ({ email, password, fullName, avatar, birthday, phone, address }) => {
   return async (dispatch) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -22,10 +22,11 @@ export const registerActionAsync = ({ email, password, fullName, avatar, birthda
       await updateProfile(auth.currentUser, {
         displayName: fullName,
         photoURL: avatar,
+        phoneNumber: phone,
       });
       const { accessToken } = user.auth.currentUser;
       console.log(user);
-      dispatch(registerActionSync({ email, fullName, avatar, accessToken, birthday, phone }, null));
+      dispatch(registerActionSync({ email, fullName, avatar, accessToken, birthday, phone, address }, null));
       if (user) {
         const Toast = Swal.mixin({
           toast: true,
@@ -153,7 +154,7 @@ export const actionLoginGoogleOrFacebook = (provider) => {
   return (dispatch) => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const { displayName, accessToken, photoURL, phoneNumber, email } =
+        const { displayName, accessToken, photoURL, phoneNumber, email, address } =
           result.user;
         console.log(result.user);
         dispatch(
@@ -163,6 +164,7 @@ export const actionLoginGoogleOrFacebook = (provider) => {
             accessToken,
             avatar: photoURL,
             phone: phoneNumber,
+            address,
             error: false,
           })
         );
@@ -205,17 +207,75 @@ export const actionLoginGoogleOrFacebook = (provider) => {
   };
 };
 
-export const updateUserAsync = (user, displayName, photoURL, phone, birthday) => {
+// export const updateUserAsync = (user, displayName, photoURL, avatar, birthday, phone ) => {
+//   return async (dispatch) => {
+//     try {
+//       await updateProfile(user, {
+//         displayName: displayName,
+//         photoURL: avatar,
+//         phoneNumber: phone,
+
+//       });
+
+//       dispatch(updateUserSync({ displayName, photoURL, phone, birthday }, null));
+//     } catch (error) {
+//       console.log(error);
+//       dispatch(
+//         updateUserSync({}, { code: error.code, message: error.message })
+//       );
+//     }
+//   };
+// };
+
+// const updateUserSync = (updatedUser, error) => {
+//   return {
+//     type: userTypes.UPDATE_USER,
+//     payload: {
+//       user: updatedUser,
+//       error: error,
+//     },
+//   };
+// };
+// export const updateUserAsync = (displayName, photoURL, phone, birthday) => {
+//   return async (dispatch) => {
+//     try {
+//       await updateProfile(auth.currentUser, {
+//         displayName: displayName,
+//         photoURL: photoURL,
+//       });
+
+//       dispatch(updateUserSync({ displayName, photoURL, phone, birthday }, null));
+//     } catch (error) {
+//       console.log(error);
+//       dispatch(
+//         updateUserSync({}, { code: error.code, message: error.message })
+//       );
+//     }
+//   };
+// };
+
+export const updateUserSync = (updatedUser, error) => {
+    return {
+      type: userTypes.UPDATE_USER,
+      payload: {
+        user: updatedUser,
+        error: error,
+      },
+    };
+  };
+
+
+export const updateUserActionAsync = ( email, fullName, avatar, birthday, phone, address ) => {
   return async (dispatch) => {
     try {
-      await updateProfile(user, {
-        displayName: displayName,
-        photoURL: photoURL,
+      
+      await updateProfile(auth.currentUser, {
+        displayName: fullName,
+        photoURL: avatar,
         phoneNumber: phone,
-        birthday: birthday
       });
-
-      dispatch(updateUserSync({ displayName, photoURL, phone, birthday }, null));
+   
+      dispatch(updateUserSync({ email, fullName, avatar, birthday, phone, address }, null));
     } catch (error) {
       console.log(error);
       dispatch(
@@ -225,12 +285,36 @@ export const updateUserAsync = (user, displayName, photoURL, phone, birthday) =>
   };
 };
 
-const updateUserSync = (updatedUser, error) => {
+
+
+
+export const updateUserMethodsActionAsync = (  paypal, creditCard ) => {
+  return async (dispatch) => {
+    try {
+      
+      // await updateProfile(auth.currentUser, {
+      //   displayName: fullName,
+      //   photoURL: avatar,
+      //   phoneNumber: phone,
+      // });
+   
+      dispatch(updateUserMethodsSync({ paypal, creditCard }, null));
+    
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        updateUserMethodsSync({}, { code: error.code, message: error.message })
+      );
+    }
+  };
+};
+export const updateUserMethodsSync = (updatedUser, error) => {
   return {
-    type: userTypes.UPDATE_USER,
+    type: userTypes.UPDATE_METHODS,
     payload: {
       user: updatedUser,
       error: error,
     },
   };
 };
+

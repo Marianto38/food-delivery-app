@@ -2,7 +2,8 @@ import { userTypes } from "../types/userTypes";
 
 const initialValue = {
     user: {},
-    error: null
+    error: null,
+    paymentMethods: {}
 }
 
 
@@ -34,9 +35,20 @@ const userReducer = (state = initialValue, action) => {
             return {
                 ...state,
                 user: {
-                    ...action.payload
+                    ...action.payload.user
                 }
             }
+            case userTypes.UPDATE_METHODS:
+                return {
+                  ...state,
+                  user: {
+                    ...state.user,
+                  },
+                  paymentMethods:{
+                    ...action.payload
+                  }
+                };
+              
         default:
             return {
                 ...state

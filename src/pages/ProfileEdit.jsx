@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-//import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik } from 'formik';
@@ -10,15 +9,14 @@ import { faChevronLeft, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import BtnCta from '../components/common/btnCta/BtnCta';
 import { useDispatch, useSelector } from "react-redux";
-import { registerActionAsync, updateUserAsync } from '../redux/actions/userActions';
+import { updateUserActionAsync } from '../redux/actions/userActions';
 import AvatarUpload from '../components/login/uploadImage/AvatarUpload';
-import { auth } from '../firebase/firebaseConfig';
+import Swal from 'sweetalert2';
 
 const ProfileEdit = () => {
 
   const { user } = useSelector((store) => store.user);
   console.log(user);
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,21 +28,21 @@ const ProfileEdit = () => {
       .string()
       .email("Debe ingresar un email")
       .required("Este campo es obligatorio"),
-    password: yup
-      .string()
-      .required("Este campo es obligatorio")
-      .min(8, "La contraseña debe contener al menos 8 caracteres.")
-      .max(16, "La contraseña no puede contener más de 16 caracteres")
-      .oneOf(
-        [yup.ref("repeatPassword")],
-        "Las contraseñas ingresadas no coinciden"
-      ),
-    repeatPassword: yup
-      .string()
-      .required("Este campo es obligatorio")
-      .min(8, "La contraseña debe contener al menos 8 caracteres.")
-      .max(16, "La contraseña no puede contener más de 16 caracteres")
-      .oneOf([yup.ref("password")], "Las contraseñas ingresadas no coinciden"),
+    // password: yup
+    //   .string()
+    //   .required("Este campo es obligatorio")
+    //   .min(8, "La contraseña debe contener al menos 8 caracteres.")
+    //   .max(16, "La contraseña no puede contener más de 16 caracteres")
+    //   .oneOf(
+    //     [yup.ref("repeatPassword")],
+    //     "Las contraseñas ingresadas no coinciden"
+    //   ),
+    // repeatPassword: yup
+    //   .string()
+    //   .required("Este campo es obligatorio")
+    //   .min(8, "La contraseña debe contener al menos 8 caracteres.")
+    //   .max(16, "La contraseña no puede contener más de 16 caracteres")
+    //   .oneOf([yup.ref("password")], "Las contraseñas ingresadas no coinciden"),
     // avatar: yup
     //   .mixed()
     //   .test("file", "Por favor ingrese una imagen", (value) =>
@@ -55,11 +53,26 @@ const ProfileEdit = () => {
 
 
   const handleUpdateUser = async (values) => {
-    console.log(values)
     console.log('update')
     values.avatar = avatar;
-   dispatch(updateUserAsync(auth.currentUser, values.fullName, values.avatar, values.phone, values.birthday));
-   dispatch(registerActionAsync(values));
+   dispatch(updateUserActionAsync(values.email, values.fullName, values.avatar, values.birthday, values.phone)).then(() => {
+    const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        Toast.fire({
+          icon: 'success',
+          title: '¡The user was successfully updated!'
+        })
+
+      } )
   };
 
   const handleBack = () => {
@@ -81,7 +94,7 @@ const ProfileEdit = () => {
                   email: user.email,
                   avatar: user.avatar,
                   fullName: user.fullName,
-                  password: user.password,
+                //  password: user.password,
                   birthday: user.birthday,
                   phone: user.phone,
                 }}
@@ -240,7 +253,6 @@ const ProfileEdit = () => {
                       </div>
                     </div>
                     
-
                     <BtnCta cta={'SAVE'} bgColor={'#FFE031'} type={'submit'}  />
 
                   </Form>
@@ -255,3 +267,4 @@ const ProfileEdit = () => {
 }
 
 export default ProfileEdit
+

@@ -82,6 +82,7 @@ const Register = () => {
                   password: '',
                   birthday: "",
                   phone: "",
+                  address:"",
                 }}
               >
                 {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -226,6 +227,31 @@ const Register = () => {
                             <Form.Control.Feedback className='form__login__errors'>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid" className='form__login__errors'>
                               {errors.phone}
+                            </Form.Control.Feedback>
+                          </Form.Group>
+                        </InputGroup>
+                      </div>
+                    </Row>
+
+                    <Row className="mb-3 form__login" >
+                      <div >
+                        <InputGroup className="mb-1">
+                          <Form.Group controlId="validationFormik04">
+                            <Form.Label>ADDRESS</Form.Label>
+                            <Form.Control
+                              type="text"
+                              name="address"
+                              placeholder='882 Well St, New-York'
+                              value={values.address}
+                              onChange={handleChange}
+                              isValid={touched.address && !errors.address}
+                              isInvalid={!!errors.address}
+                              className='form__login__input'
+                              autoComplete="off"
+                            />
+                            <Form.Control.Feedback className='form__login__errors'>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid" className='form__login__errors'>
+                              {errors.address}
                             </Form.Control.Feedback>
                           </Form.Group>
                         </InputGroup>

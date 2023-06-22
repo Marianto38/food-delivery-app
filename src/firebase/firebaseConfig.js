@@ -21,3 +21,5 @@ export const auth = getAuth(app);
 export const dataBase = getFirestore(app);
 export const google = new GoogleAuthProvider();
 export const facebook = new FacebookAuthProvider();
+//Initialize db to save phone and birthday
+//const db = dataBase; // Asigna 'dataBase' a 'db'
