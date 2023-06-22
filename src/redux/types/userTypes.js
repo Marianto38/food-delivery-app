@@ -4,3 +4,7 @@ export const userTypes = {
     LOGOUT_USER: "LOGOUT_USER",
     UPDATE_USER: "UPDATE_USER",
   };
+
+export const restaurantsTypes = {
+  RESTAURANTS_GET: 'RESTAURANTS_GET'
+};

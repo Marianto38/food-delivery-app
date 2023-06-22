@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import RestaurantCard from './card/RestaurantCard'
 import './styleRestaurants.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { actionGetRestaurantsAsync } from '../../redux/actions/restaurantsActions';
 
-const Restaurants = () => {
+const Restaurants = ({restaurants}) => {
   return (
     <div className='restaurants'>
-      <RestaurantCard/>
-      <RestaurantCard/>
-      <RestaurantCard/>
-      <RestaurantCard/>
+      <RestaurantCard restaurants={restaurants}/>
     </div>
   )
 }

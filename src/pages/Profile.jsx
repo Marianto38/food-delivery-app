@@ -11,6 +11,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { pink } from '@mui/material/colors';
 import Switch from '@mui/material/Switch';
 import { SignalWifiStatusbarNullOutlined } from '@mui/icons-material';
+import Footer from '../components/home/footer/Footer';
 
 
 const LinkProfile = ({ iconProfile, text, iconState, navigateTo }) => {
@@ -98,6 +99,7 @@ const Profile = () => {
           iconState={data.icon2}
         />
       ))}
+      <Footer/>
     </>
   );
 

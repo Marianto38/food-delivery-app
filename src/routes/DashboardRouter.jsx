@@ -4,8 +4,8 @@ import Home from "../pages/Home";
 import Search from "../pages/Search";
 import OrdersHistory from "../pages/OrdersHistory";
 import Order from "../pages/Order";
-//import Restaurant from "../pages/Restaurant";
-//import Dish from "../pages/Dish";
+import Restaurant from "../pages/Restaurant";
+import Dish from "../pages/Dish";
 import NewOrder from "../pages/NewOrder";
 import OrderAccepted from "../pages/OrderAccepted";
 import CurrentOrder from "../pages/CurrentOrder";
@@ -21,6 +21,8 @@ const DashboardRouter = () => {
       <Route path={"/search"} element={<Search/>} />
       <Route path={"/ordershistory"} element={<OrdersHistory/>} />
       <Route path={"/order/:id"} element={<Order/>} />
+      <Route path={"/restaurant"} element={<Restaurant/>} />
+      <Route path={"/dish"} element={<Dish/>} />
       {/* <Route path={"/restaurant/:id"} element={<Restaurant/>}>
         <Route path={"/dish/:id"} element={<Dish/>}/>
       </Route> */}
