@@ -8,4 +8,6 @@ export const userTypes = {
 
 export const restaurantsTypes = {
   RESTAURANTS_GET: "RESTAURANTS_GET",
+  RESTAURANT_FILTERED: "RESTAURANT_FILTERED",
+  SET_RECENT_QUERIES: "SET_RECENT_QUERIES"
 };

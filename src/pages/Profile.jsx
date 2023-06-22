@@ -81,10 +81,13 @@ const Profile = () => {
 
   return (
     <>
-      <div className='link__profile__image'>
-        <Image src={user?.avatar} roundedCircle />
-        <h2 className='link__profile__name'>{capitalizeFirstLetter(user?.fullName)}</h2>
-      </div>
+      {user.avatar &&
+        <div className='link__profile__image'>
+          <Image src={user?.avatar} roundedCircle />
+          <h2 className='link__profile__name'>{capitalizeFirstLetter(user?.fullName)}</h2>
+
+        </div>
+      }
 
       {dataProfile.map((data) => (
 
@@ -95,7 +98,7 @@ const Profile = () => {
           iconState={data.icon2}
         />
       ))}
-          <Footer/>
+      <Footer />
     </>
   );
 }

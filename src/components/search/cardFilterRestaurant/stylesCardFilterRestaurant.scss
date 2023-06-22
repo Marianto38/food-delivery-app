@@ -1,0 +1,32 @@
+@import '../../../index.scss';
+
+.container__cardFilter {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    figure {
+        display: flex;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 0;
+        img {
+            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+        object-fit: cover;
+        
+        }
+    }
+    &__p {
+        color: $grayColor;
+    }
+    &__description {
+        display: flex;
+        flex-direction: column;
+        
+    }
+}

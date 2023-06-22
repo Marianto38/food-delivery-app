@@ -24,44 +24,87 @@ const AppRouter = () => {
   const { user } = useSelector((store) => store.user);
   console.log(user);
 
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (userLogged) => {
+  //     if (userLogged?.uid) {
+  //       setIsLoggedIn(true);
+  
+  //       if (!Object.entries(user).length) {
+  //         console.log("No hay info");
+  //         const db = dataBase; // Asigna 'dataBase' a 'db'
+  
+  //         // Obtener referencia al documento del usuario en Firestore
+  //         const userDocRef = doc(db, 'users', userLogged.uid);
+  
+  //         // Obtener los datos del documento del usuario
+  //         getDoc(userDocRef)
+  //           .then((docSnap) => {
+  //             if (docSnap.exists()) {
+  //               const userData = docSnap.data();
+  
+  //               // Obtener phone y birthday del documento del usuario
+  //               const { phone, birthday } = userData;
+  
+  //               const logged = {
+  //                 email: userLogged.auth.currentUser.email,
+  //                 fullName: userLogged.auth.currentUser.displayName,
+  //                 avatar: userLogged.auth.currentUser.photoURL,
+  //                 accessToken: userLogged.auth.currentUser.accessToken,
+  //                 phone: phone, // Agregar el valor de phone
+  //                 birthday: birthday, // Agregar el valor de birthday
+  //               };
+  //               dispatch(loginActionSync(logged));
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error al obtener los datos del usuario:", error);
+  //           });
+  //       }
+  
+  //       console.log(userLogged);
+  //     } else {
+  //       setIsLoggedIn(false);
+  //     }
+  
+  //     setLoading(false);
+  //   });
+  // }, [user, dispatch]);
   useEffect(() => {
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged?.uid) {
         setIsLoggedIn(true);
   
-        if (!Object.entries(user).length) {
-          console.log("No hay info");
-          const db = dataBase; // Asigna 'dataBase' a 'db'
+        const db = dataBase; // Asigna 'dataBase' a 'db'
   
-          // Obtener referencia al documento del usuario en Firestore
-          const userDocRef = doc(db, 'users', userLogged.uid);
+        // Obtener referencia al documento del usuario en Firestore
+        const userDocRef = doc(db, 'users', userLogged.uid);
   
-          // Obtener los datos del documento del usuario
-          getDoc(userDocRef)
-            .then((docSnap) => {
-              if (docSnap.exists()) {
-                const userData = docSnap.data();
+        // Obtener los datos del documento del usuario
+        getDoc(userDocRef)
+          .then((docSnap) => {
+            if (docSnap.exists()) {
+              const userData = docSnap.data();
   
-                // Obtener phone y birthday del documento del usuario
-                const { phone, birthday } = userData;
+              // Obtener phone y birthday del documento del usuario
+              const { phone, birthday } = userData;
   
-                const logged = {
-                  email: userLogged.auth.currentUser.email,
-                  fullName: userLogged.auth.currentUser.displayName,
-                  avatar: userLogged.auth.currentUser.photoURL,
-                  accessToken: userLogged.auth.currentUser.accessToken,
-                  phone: phone, // Agregar el valor de phone
-                  birthday: birthday, // Agregar el valor de birthday
-                };
-                dispatch(loginActionSync(logged));
-              }
-            })
-            .catch((error) => {
-              console.error("Error al obtener los datos del usuario:", error);
-            });
-        }
-  
-        console.log(userLogged);
+              const logged = {
+                email: userLogged.auth.currentUser.email,
+                fullName: userLogged.auth.currentUser.displayName,
+                avatar: userLogged.auth.currentUser.photoURL,
+                accessToken: userLogged.auth.currentUser.accessToken,
+                phone: phone,
+                birthday: birthday,
+              };
+              dispatch(loginActionSync(logged));
+            } else {
+              // No se encontró el documento del usuario en Firestore
+              // Aquí puedes decidir cómo manejar esta situación
+            }
+          })
+          .catch((error) => {
+            console.error("Error al obtener los datos del usuario:", error);
+          });
       } else {
         setIsLoggedIn(false);
       }
