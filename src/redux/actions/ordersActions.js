@@ -41,7 +41,9 @@ export const actionAddOrderAsync = (orders) => {
     try {
       const ordersCollection = collection(dataBase, collectionName);
       const docs = await addDoc(ordersCollection, orders);
+      const docId = docs.id; 
       dispatch(actionAddOrderSync({ id: docs.id, ...orders }));
+      localStorage.setItem('orderId', JSON.stringify(docId)); 
     } catch (error) {
       console.log(error);
       dispatch(actionAddOrderSync({}));

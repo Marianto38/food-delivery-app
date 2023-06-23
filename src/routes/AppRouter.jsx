@@ -24,6 +24,8 @@ const AppRouter = () => {
   const { user } = useSelector((store) => store.user);
   console.log(user);
 
+  console.log(auth)
+
   // useEffect(() => {
   //   onAuthStateChanged(auth, (userLogged) => {
   //     if (userLogged?.uid) {

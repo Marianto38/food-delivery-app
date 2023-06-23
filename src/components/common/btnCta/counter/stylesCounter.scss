@@ -1,0 +1,83 @@
+@import '../../../../index.scss';
+
+
+@mixin quantity-button-counter {
+    min-width: 44px;
+    min-height: 44px;
+    outline: 0;
+    font-size: 12px;
+    color: $darkColor;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    background-color: $grayColor;
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.container {
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // padding: 1rem;
+        gap: 1rem;
+        justify-content: space-between;
+     &__first {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+     }
+      
+        figure {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            img {
+                width: 44px;
+                border-radius: 10px;
+                align-items: center;
+            }
+        }
+    }
+    display: flex;
+    &__row {
+        display: flex;
+        width: auto;
+        margin-top: 1rem;
+        gap: 8px;
+    }
+
+    &__categories {
+        width: 100px;
+    }
+
+    &__quantityCounter {
+        display: flex;
+        align-items: center;
+
+        &__name, &__price {       
+            margin: 0;
+        }       
+
+        p {
+            @include quantity-button-counter;
+            margin: 0;
+            align-items: center;
+        }
+    }
+
+    &__quantityCounter--decrement {
+        @include quantity-button-counter;
+        border-radius: 10px 0 0 10px;
+      
+    }
+
+    &__quantityCounter--increment {
+        @include quantity-button-counter;
+        border-radius: 0 10px 10px 0;
+    }
+}

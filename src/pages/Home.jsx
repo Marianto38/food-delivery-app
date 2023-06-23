@@ -19,7 +19,10 @@ const Home = () => {
   console.log(restaurants)
 
   const { orders } = useSelector((store) => store.orders);
-  console.log(orders);
+  //console.log(orders);
+
+  const { user } = useSelector((store) => store.user);
+  console.log(user);
 
   useEffect(() => {
     dispatch(actionGetRestaurantsAsync());

@@ -12,13 +12,16 @@ import Swal from 'sweetalert2';
 
 
 export const registerActionAsync = ({ email, password, fullName, avatar, birthday, phone, address }) => {
+  console.log(phone)
+  
   return async (dispatch) => {
     try {
       //await setPersistence(auth, browserSessionPersistence)
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
+        phone
       );
 
       await updateProfile(auth.currentUser, {
