@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 const Restaurant = () => {
   const navigate = useNavigate();
-  const { restaurants} = useSelector((store) => store.restaurants);
+  const { restaurants } = useSelector((store) => store.restaurants);
 
   const { id } = useParams();
   const restaurantsFound = restaurants.find((item) => item.id === id);

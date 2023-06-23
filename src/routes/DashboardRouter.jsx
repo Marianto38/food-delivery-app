@@ -24,6 +24,7 @@ const DashboardRouter = () => {
       <Route path={"/order/:id"} element={<Order/>} />
       <Route path={"/restaurant/:id"} element={<Restaurant/>} />
       <Route path={"/dish/:id"} element={<Dish/>} />
+      <Route path={"/restaurant/:restaurantId/dish/:dishId"} element={<Dish/>} />
       {/* <Route path={"/restaurant/:id"} element={<Restaurant/>}>
         <Route path={"/dish/:id"} element={<Dish/>}/>
       </Route> */}
