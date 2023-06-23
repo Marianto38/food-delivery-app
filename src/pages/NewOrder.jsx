@@ -10,8 +10,10 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const NewOrder = () => {
+
+  const { orders } = useSelector((store) => store.orders);
+  console.log(orders);
 
   const navigate = useNavigate();
   const handleBack = () => {
