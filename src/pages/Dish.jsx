@@ -10,20 +10,20 @@ const Dish = () => {
 
   const { restaurants } = useSelector((store) => store.restaurants);
   console.log(restaurants);
-  
-  const { id } = useParams();
-  console.log(id)
+
+  const { restaurantId, dishId } = useParams();
+
+  console.log('Restaurant ID:', restaurantId);
+  console.log('Dish ID:', dishId);
   let dishFound = null;
   
-  restaurants.forEach((restaurant) => {
-    const found = restaurant.dishes.find((item) => item.id === id);
-    if (found) {
-      dishFound = found;
-      return; // Salir del bucle forEach si se encuentra el elemento
+  if (restaurants && restaurants.length > 0) {
+    const restaurant = restaurants.find((item) => item.id === restaurantId);
+    if (restaurant) {
+      dishFound = restaurant.dishes.find((item) => item.id === dishId);
     }
-  });
-  
-  console.log(dishFound);
+  }
+    console.log(dishFound)
 
   return (
     <div className='dish'>
@@ -46,11 +46,12 @@ const Dish = () => {
       </div>
       <div className="dish__aditional">
         <span className="aditional__title">Additional Ingredients</span>
+      {dishFound.ingredients.map((item) => (
         <div className="dish__ingredients">
           <div className="dish__first">
             <Checkbox style={{padding: 0}}
               {...label}
-              defaultChecked
+              // defaultChecked
               sx={{
                 color: '#A7A7A7',
                 '&.Mui-checked': {
@@ -58,38 +59,12 @@ const Dish = () => {
                 },
               }}
             />
-            <span className='ingredient'>Tomatoes</span>
-            <span>+2$</span>
-          </div>
-          <div className="dish__second">
-            <Checkbox style={{padding: 0}}
-              {...label}
-              sx={{
-                color: '#A7A7A7',
-                '&.Mui-checked': {
-                  color: '#FFE031',
-                },
-              }}
-            />
-            <span className='ingredient'>Grain</span>
-            <span>+1$</span>
-          </div>
-          <div className="dish__third">
-            <Checkbox style={{padding: 0}}
-              {...label}
-              sx={{
-                color: '#A7A7A7',
-                '&.Mui-checked': {
-                  color: '#FFE031',
-                },
-              }}
-            />
-            <span className='ingredient'>Lettuce leaf</span>
-            <span>+1$</span>
+            <span className='ingredient'>{item.name}</span>
+            <span>+{item.price}$</span>
           </div>
         </div>
+        ))}
       </div>
-      div
     </div>
   )
 }

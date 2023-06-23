@@ -6,9 +6,9 @@ const DishGeneral = ({restaurantsFound}) => {
 
   const navigate = useNavigate();
   const handleToDish = (dishId) => {
-    navigate(`/dish/${dishId}`);
+    navigate(`/restaurant/${restaurantsFound.id}/dish/${dishId}`);
   }
-  
+  console.log(restaurantsFound)
   return (
     <>
     {restaurantsFound.dishes.map((dish) => (

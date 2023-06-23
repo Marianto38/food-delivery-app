@@ -2,12 +2,13 @@ import React from 'react'
 import './stylesCardFilterRestaurant.scss'
 import { useNavigate } from 'react-router-dom';
 
-const CardFilterRestaurant = ({title, image, price, dishId}) => {
+const CardFilterRestaurant = ({title, image, price, dishId, restaurant}) => {
 
+  console.log(restaurant)
   const navigate = useNavigate();
 
   const handleNavigateToDishId = () => {
-    navigate(`/dish/${dishId}`)
+    navigate(`/restaurant/${restaurant}/dish/${dishId}`)
     // Otras lógicas relacionadas con la navegación al plato
     console.log('navegare a dish', dishId);
   };

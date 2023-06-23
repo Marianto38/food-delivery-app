@@ -76,10 +76,10 @@ const Search = () => {
        {restaurants.length === 0 ? (
         <img src="https://res.cloudinary.com/dd8l8bm6q/image/upload/v1687033444/deliveryApp/kxywwe3mkggdycrpzmox.png" alt="" />
        ) : (
-         restaurants.map((item) =>
-           item.dishes.map((item) => (
-            <div  >
-             <CardFilterRestaurant key={item.id} title={item.name} image={item.image} price={item.price}  dishId={item.id} />
+         restaurants.map((restaurant) =>
+         restaurant.dishes.map((item) => (
+            <div>
+             <CardFilterRestaurant key={item.id} title={item.name} image={item.image} price={item.price}  dishId={item.id} restaurant={restaurant.id} />
              </div>
            ))
          )
