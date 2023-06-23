@@ -15,11 +15,19 @@ import { actionGetOrdersAsync } from "../redux/actions/ordersActions";
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { restaurants}   = useSelector((store) => store.restaurants);
+  const { restaurants } = useSelector((store) => store.restaurants);
   console.log(restaurants)
 
   const { orders } = useSelector((store) => store.orders);
   //console.log(orders);
+
+  const orderId = JSON.parse(localStorage.getItem('orderId'));
+  let recentOrder = ''
+
+  if (orders && orders.length > 0) {
+    recentOrder = orders.find((item) => item.id === orderId);
+  }
+
 
   const { user } = useSelector((store) => store.user);
   console.log(user);
@@ -29,17 +37,46 @@ const Home = () => {
     dispatch(actionGetOrdersAsync());
   }, [dispatch]);
 
+  const navigate = useNavigate();
+
+  const handleToOrder = () => {
+    navigate('/order');
+  }
+
   return (
     <section className='home'>
       <div className="home__header">
-        <Header/>
+        <Header />
       </div>
       <div className="home__restaurants">
         <p className='restaurants__title'>Restaurants and cafes</p>
-        <Categories/>
-        <Restaurants restaurants={restaurants}/>
+        <Categories />
+        <Restaurants restaurants={restaurants} />
       </div>
-      <Footer/>
+
+      {recentOrder &&
+        <>
+          <button onClick={handleToOrder} type="submit"
+            style={{
+              width: '90%',
+              height: '44px',
+              backgroundColor: `#FFE031`,
+              border: 'none',
+              borderRadius: '10px',
+              position: 'fixed',
+              bottom: '60px',
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              marginRight: '10px'
+
+            }}>
+            <span style={{ backgroundColor: 'black', color: 'white', width: '22px', textAlign: 'center', borderRadius: '5px', marginRight: '10px' }}>{recentOrder.quantity}</span>
+            <span>View Card</span> <span>{recentOrder.total}</span>
+          </button>
+        </>
+      }
+      <Footer />
     </section>
   );
 };

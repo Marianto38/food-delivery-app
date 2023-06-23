@@ -21,7 +21,7 @@ const DashboardRouter = () => {
       <Route path={"/home"} element={<Home/>} />
       <Route path={"/search"} element={<Search/>} />
       <Route path={"/ordershistory"} element={<OrdersHistory/>} />
-      <Route path={"/order/:id"} element={<Order/>} />
+      <Route path={"/order"} element={<Order/>} />
       <Route path={"/restaurant/:id"} element={<Restaurant/>} />
       <Route path={"/dish/:id"} element={<Dish/>} />
       <Route path={"/restaurant/:restaurantId/dish/:dishId"} element={<Dish/>} />

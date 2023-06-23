@@ -6,6 +6,7 @@ import '../components/order/stylesOrder.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Order = () => {
   const count = 1
@@ -15,6 +16,17 @@ const Order = () => {
   const handleBack = () => {
     navigate('/dish')
   }
+
+  const { orders } = useSelector((store) => store.orders);
+  //console.log(orders);
+
+  const orderId = JSON.parse(localStorage.getItem('orderId'));
+  let recentOrder = ''
+
+  if (orders && orders.length > 0) {
+    recentOrder = orders.find((item) => item.id === orderId);
+  }
+
 
   return (
     <>
@@ -26,17 +38,17 @@ const Order = () => {
       </div>
 
       <div className='container__itemDish'>
-        <ItemDishCurrentOrder />
+        <ItemDishCurrentOrder name={recentOrder.name} price={recentOrder.price} quantity={recentOrder.quantity} />
       </div>
 
 
       <AccountSummary
         descriptionOne={"Products"}
-        descriptionTwo={"60.45$"}
-        priceOne={"Delivery"}
+        descriptionTwo={"Delivery"}
+        priceOne={recentOrder.price}
         priceTwo={"4.5$"}
         total={" Total"}
-        priceTotal={"64.95$"}
+        priceTotal={recentOrder.total}
 
       />
     </div>
