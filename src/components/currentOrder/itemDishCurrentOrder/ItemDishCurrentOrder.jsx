@@ -3,43 +3,7 @@ import { useState } from 'react';
 //import Swal from 'sweetalert2';
 import './stylesItemDishToAdd.scss';
 
-const ItemDishCurrentOrder = () => {
-
-  const count = 1
-
-      console.log(count)
-
-//     if (count >= 1) {
-//         const orderPizzaDetails = {
-//             pizza: pizzaFound,
-//             quantityPizza: count,
-//         }
-//         console.log(orderPizzaDetails);
-//         updateOrderPizza(orderPizzaDetails);
-//         Swal.fire({
-//             position: 'top-end',
-//             icon: 'success',
-//             title: `¡Se agregó ${count}  ${pizzaFound?.name}!`,
-//             showConfirmButton: false,
-//             timer: 1500
-//           }).then(() => {
-//             navigate('/cart');
-//           });
-        
-//     } else {
-//         Swal.fire({
-//             position: 'top-end',
-//             icon: 'warning',
-//             title: '¡No has agregado una pizza!',
-//             showConfirmButton: false,
-//             timer: 1500
-//           })
-//         console.log('no has seleccionado pizza');
-//     }
-
-// console.log(orderPizza);
-
-
+const ItemDishCurrentOrder = ({name, price, quantity}) => {
 
 
   return (
@@ -51,14 +15,14 @@ const ItemDishCurrentOrder = () => {
 
         <div className=''>
          
-          <p>x {count}</p>
+          <p>x {quantity}</p>
         
         </div>
 
-        <p className='container__quantity__name'>Vegetarian Pizza</p>
+        <p className='container__quantity__name'>{name}</p>
 
         </div>
-        <p className='container__quantity__price'>$32.00</p>
+        <p className='container__quantity__price'>${price}</p>
    </div>
   )
 }

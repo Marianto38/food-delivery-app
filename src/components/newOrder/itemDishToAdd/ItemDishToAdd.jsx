@@ -3,9 +3,9 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import './stylesItemDishToAdd.scss';
 
-const ItemDishToAdd = () => {
+const ItemDishToAdd = ({ countSelected, dishName, price}) => {
 
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(countSelected)
 
     const increment = () => {
         setCount((prevCount) => prevCount + 1);
@@ -16,7 +16,7 @@ const ItemDishToAdd = () => {
       };
     
       console.log(count)
-
+      localStorage.setItem('countDishInNewOrder', JSON.stringify(count))
 //     if (count >= 1) {
 //         const orderPizzaDetails = {
 //             pizza: pizzaFound,
@@ -63,10 +63,10 @@ const ItemDishToAdd = () => {
           <button onClick={increment} className='container__quantity--increment'>+</button>
         </div>
 
-        <p className='container__quantity__name'>Vegetarian Pizza</p>
+        <p className='container__quantity__name'>{dishName}</p>
 
         </div>
-        <p className='container__quantity__price'>$32.00</p>
+        <p className='container__quantity__price'>${price}</p>
    </div>
   )
 }

@@ -11,13 +11,10 @@ const steps = [
   'On the way',
   'Delivered',
 ];
-const SteperCurrentOrder = () => {
-
-
-
+const SteperCurrentOrder = ({stepStatus}) => {
   return (
     <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={1} alternativeLabel>
+      <Stepper activeStep={stepStatus} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

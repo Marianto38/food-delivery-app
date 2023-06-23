@@ -10,6 +10,7 @@ import Categories from '../components/restaurants/categories/Categories'
 import Footer from '../components/home/footer/Footer'
 import { useEffect } from "react";
 import { actionGetRestaurantsAsync } from "../redux/actions/restaurantsActions";
+import { actionGetOrdersAsync } from "../redux/actions/ordersActions";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,15 @@ const Home = () => {
   const { restaurants}   = useSelector((store) => store.restaurants);
   console.log(restaurants)
 
+  const { orders } = useSelector((store) => store.orders);
+  //console.log(orders);
+
+  const { user } = useSelector((store) => store.user);
+  console.log(user);
+
   useEffect(() => {
     dispatch(actionGetRestaurantsAsync());
+    dispatch(actionGetOrdersAsync());
   }, [dispatch]);
 
   return (
