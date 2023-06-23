@@ -83,7 +83,7 @@ const Profile = () => {
     <>
       {user.avatar &&
         <div className='link__profile__image'>
-          <img src={user?.avatar} alt="" style={{width:'90px', height:'90px'}}/>
+          <img src={user?.avatar} alt="" style={{width:'90px', height:'90px', borderRadius:'50%'}}/>
           {/* <Image src={user?.avatar} roundedCircle  /> */}
           <h2 className='link__profile__name'>{capitalizeFirstLetter(user?.fullName)}</h2>
 
