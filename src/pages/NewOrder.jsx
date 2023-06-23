@@ -110,8 +110,8 @@ const NewOrder = () => {
           <figure>
             <img
               className="header__icon"
-              src="https://res.cloudinary.com/dd8l8bm6q/image/upload/v1687033446/deliveryApp/oumm4vmttpba8iuafsit.png"
-              alt="Icono usuario"
+              src={user?.avatar}
+              alt={user?.name}
             />
           </figure>
         </div>
@@ -127,7 +127,7 @@ const NewOrder = () => {
       <h2 className='container__titlePayment'>Payment</h2>
 
       <div className='container__itemDish'>
-        <ItemDishToAdd countSelected={dish.quantity} dishName={dish.name} price={dish.price} />
+        <ItemDishToAdd countSelected={dish.quantity} dishName={dish.name} price={dish.price} dishImage={dish.image}/>
       </div>
 
       <div className='container__input'>

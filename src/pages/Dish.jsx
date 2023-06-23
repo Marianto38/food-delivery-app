@@ -121,7 +121,7 @@ const Dish = () => {
       <div className='dish__container__total'>
         <Counter count={count} setCount={setCount} />
         <div className='dish__btn__addOrder'>
-          <button onClick={handleAddDishToOrder}><span >ADD</span> <span >$ {total }</span></button>
+          <button onClick={handleAddDishToOrder}><span >ADD</span> <span >$ {dishFound?.price }</span></button>
         </div>
       </div>
 
