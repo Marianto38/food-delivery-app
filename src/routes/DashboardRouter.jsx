@@ -13,6 +13,7 @@ import Profile from "../pages/Profile";
 import ProfileEdit from "../pages/ProfileEdit";
 import PaymentMethod from "../pages/PaymentMethod";
 import AddNewCard from "../pages/AddNewCard";
+import DishGeneral from "../components/restaurantDetail/dishes/DishGeneral";
 
 const DashboardRouter = () => {
   return (
@@ -20,15 +21,18 @@ const DashboardRouter = () => {
       <Route path={"/home"} element={<Home/>} />
       <Route path={"/search"} element={<Search/>} />
       <Route path={"/ordershistory"} element={<OrdersHistory/>} />
-      <Route path={"/order/:id"} element={<Order/>} />
-      <Route path={"/restaurant/:id"} element={<Restaurant/>}>
+      <Route path={"/order"} element={<Order/>} />
+      <Route path={"/restaurant/:id"} element={<Restaurant/>} />
+      <Route path={"/dish/:id"} element={<Dish/>} />
+      <Route path={"/restaurant/:restaurantId/dish/:dishId"} element={<Dish/>} />
+      {/* <Route path={"/restaurant/:id"} element={<Restaurant/>}>
         <Route path={"/dish/:id"} element={<Dish/>}/>
-      </Route>
+      </Route> */}
       <Route path={"/neworder"} element={<NewOrder/>} />
       <Route path={"/orderaccepted"} element={<OrderAccepted/>} />
       <Route path={"/currentorder"} element={<CurrentOrder/>} />
       <Route path={"/profile"} element={<Profile/>} />
-      <Route path={"/profile/edite"} element={<ProfileEdit/>} />
+      <Route path={"/profile/edit"} element={<ProfileEdit/>} />
       <Route path={"/profile/payment"} element={<PaymentMethod/>} />
       <Route path={"/profile/payment/newcard"} element={<AddNewCard/>} />
     </Routes>

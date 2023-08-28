@@ -1,0 +1,42 @@
+.container {
+    &__titles {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 1rem;
+        h2 {
+            margin: 0px;
+            margin-left: 7rem;
+
+        }
+    }
+
+    &__currentOrder {
+        padding: 1rem;
+
+        &__img {
+            background-color: #ffee8d63;
+            height: auto;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: .5rem;
+
+            figure {
+                img {
+                    text-align: center;
+                }
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+
+        &__title {
+            font-size: 14px;
+            text-align: center;
+
+        }
+    }
+
+}

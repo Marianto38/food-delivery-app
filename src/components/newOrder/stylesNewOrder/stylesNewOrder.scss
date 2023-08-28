@@ -1,0 +1,68 @@
+@import "../../../index.scss";
+
+p {
+    margin: 0;
+}
+
+@mixin categories__carousel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  
+    &:first-child {
+      background: $mainColor;
+    }
+  
+    button {
+      width: 106px;
+      height: 32px;
+      background: $complementaryColor;
+      color: $darkColor;
+      font-size: 12px;
+      border: none;
+      border-radius: 8px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      cursor: pointer;
+    }
+  }
+  .categories__payment {
+    @include categories__carousel;
+    button {
+        font-size: 10px;
+    }
+
+  }
+  .input__note {
+    input {
+        border: 1px solid black;
+        min-width: 358px;
+        border-radius: 10px;
+        height: 44px;
+        padding: 5px;
+    }
+  }
+
+  .container {
+    &__payment {
+        padding: 1rem;
+    }
+
+  &__input {
+    margin-bottom: 2rem;
+  }
+
+  &__itemDish {
+    height: 150px;
+    margin-top: 1rem;
+    overflow-y: auto;
+  }
+  &__titlePayment {
+    font-size: 20px;
+    margin-top: 1.5rem;
+  }
+}

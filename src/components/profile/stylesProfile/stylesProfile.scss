@@ -1,0 +1,84 @@
+@import '../../../index.scss';
+
+@mixin container__profile {
+    display: flex;
+    flex-direction: row;
+    background-color: $complementaryColor;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 0 1rem 0 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin: 0 1rem 1rem 1rem;
+    height: 44px;
+}
+
+
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+    background-color: $complementaryColor !important;
+    border-radius: 10px !important;
+}
+
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    background-color: transparent;
+    border: none;
+}
+
+.link__profile {
+    @include container__profile;
+
+    p {
+        margin: 0;
+    }
+
+    &__icon {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &:hover {
+        background-color: $grayColor;
+    }
+
+    &__image {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    &__name {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}
+
+.form {
+    &__input__profile {
+        @include container__profile;
+    }
+
+    &__title__profile {
+        font-size: 1rem;
+        text-align: center;
+        // margin-top: 1rem;
+    }
+
+    &__profile__input {
+        background-color: transparent;
+        display: flex;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        color: $darkColor;
+        min-width: auto;
+        padding-bottom: 2px;
+        font-size: 14px;
+
+    }
+}
+
+.cambiar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

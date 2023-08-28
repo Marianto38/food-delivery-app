@@ -1,0 +1,77 @@
+@import '../../../index.scss';
+
+
+@mixin quantity-button {
+    min-width: 22px;
+    min-height: 22px;
+    outline: 0;
+    font-size: 12px;
+    color: $darkColor;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    background-color: $grayColor;
+   border: none;
+}
+
+.container {
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // padding: 1rem;
+        gap: 1rem;
+        justify-content: space-between;
+     &__first {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+     }
+      
+        figure {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            img {
+                width: 44px;
+                border-radius: 10px;
+                align-items: center;
+            }
+        }
+    }
+    display: flex;
+    &__row {
+        display: flex;
+        width: auto;
+        margin-top: 1rem;
+        gap: 8px;
+    }
+
+    &__categories {
+        width: 100px;
+    }
+
+    &__quantity {
+        display: flex;
+
+        &__name, &__price {       
+            margin: 0;
+        }       
+
+        p {
+            @include quantity-button;
+            margin: 0;
+        }
+    }
+
+    &__quantity--decrement {
+        @include quantity-button;
+        border-radius: 10px 0 0 10px;
+    }
+
+    &__quantity--increment {
+        @include quantity-button;
+        border-radius: 0 10px 10px 0;
+    }
+}
