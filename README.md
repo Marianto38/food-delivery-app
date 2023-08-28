@@ -2,6 +2,10 @@
 ## Descripción del desarrollo: 
 El objetivo del proyecto es construir un aplicativo web para reservar platos de restaurantes registrados en la app, por lo cual se requiere registro de usuario e inicio de sesión y tiene un enfoque en vista mobile.
 
+## URL del despliegue:
+
+[Food Delivery App](https://food-delivery-app-3582e.web.app/)
+
 ***Herramientas y librerias implementadas*** 
 1. Emplear las librerías JavaScript React-Redux y Redux toolkit
 2. Implementar el ciclo de Redux
