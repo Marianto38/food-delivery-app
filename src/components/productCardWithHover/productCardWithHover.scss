@@ -1,0 +1,15 @@
+.productCardWithHover {
+    &__btns {
+        font-size: 1.3rem;
+    }
+    &__img {
+        position: relative;
+    }
+    &__heart {
+        position: absolute; 
+        top: 0;
+        right: 0;
+        margin: .5rem;
+        font-size: 1.2rem;
+    }
+}

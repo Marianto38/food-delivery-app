@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 //import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 //import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
+//import SwipeableViews from 'react-swipeable-views';
 import { useNavigate } from 'react-router-dom';
 import './stylesStepersLogin/stylesSteperLogin.scss'
 
@@ -59,62 +59,63 @@ function SwipeableTextMobileStepper() {
   }
 
   return (
-    <div style={{ height: '100vh' }}>
-      <div className='container1' sx={{ maxWidth: 400, flexGrow: 1 }}>
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            // height: '80vh',
-            pl: 2,
-            bgcolor: 'background.default',
-          }}
-        >
-        </Paper>
-        <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={activeStep}
-          onChangeIndex={handleStepChange}
-        >
-          {images.map((step, index) => (
-            <div key={step.label}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <Box
-                  component="img"
-                  sx={{
-                    // height: '90%',
-                    display: 'block',
-                    maxWidth: 400,
-                    overflow: 'hidden',
-                    width: '100%',
-                  }}
-                  src={step.imgPath}
-                  alt={step.label}
-                />
-              ) : null}
-            </div>
-          ))}
-        </SwipeableViews>
-        <Typography style={{ textAlign: 'center', padding: '2rem' }}>{images[activeStep].label}</Typography>
-        <MobileStepper style={{ marginTop: '4rem' }}
-          variant="dots"
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={
-            <Button style={{ backgroundColor: '#FFE031', width: '100%', color: 'black', borderRadius: '10px' }}
-              //size="small"
-              onClick={handleNext}
-              disabled={activeStep === maxSteps - 1}
-            >
-              Next
-            </Button>
-          }
-        />
-      </div>
-    </div>
+    <div></div>
+    // <div style={{ height: '100vh' }}>
+    //   <div className='container1' sx={{ maxWidth: 400, flexGrow: 1 }}>
+    //     <Paper
+    //       square
+    //       elevation={0}
+    //       sx={{
+    //         display: 'flex',
+    //         alignItems: 'center',
+    //         // height: '80vh',
+    //         pl: 2,
+    //         bgcolor: 'background.default',
+    //       }}
+    //     >
+    //     </Paper>
+    //     <SwipeableViews
+    //       axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+    //       index={activeStep}
+    //       onChangeIndex={handleStepChange}
+    //     >
+    //       {images.map((step, index) => (
+    //         <div key={step.label}>
+    //           {Math.abs(activeStep - index) <= 2 ? (
+    //             <Box
+    //               component="img"
+    //               sx={{
+    //                 // height: '90%',
+    //                 display: 'block',
+    //                 maxWidth: 400,
+    //                 overflow: 'hidden',
+    //                 width: '100%',
+    //               }}
+    //               src={step.imgPath}
+    //               alt={step.label}
+    //             />
+    //           ) : null}
+    //         </div>
+    //       ))}
+    //     </SwipeableViews>
+    //     <Typography style={{ textAlign: 'center', padding: '2rem' }}>{images[activeStep].label}</Typography>
+    //     <MobileStepper style={{ marginTop: '4rem' }}
+    //       variant="dots"
+    //       steps={maxSteps}
+    //       position="static"
+    //       activeStep={activeStep}
+    //       nextButton={
+    //         <Button style={{ backgroundColor: '#FFE031', width: '100%', color: 'black', borderRadius: '10px' }}
+    //           //size="small"
+    //           onClick={handleNext}
+    //           disabled={activeStep === maxSteps - 1}
+    //         >
+    //           Next
+    //         </Button>
+    //       }
+    //     />
+    //   </div>
+    // </div>
   );
 }
 

@@ -3,6 +3,9 @@ import "./styleHeader.scss";
 import { Carousel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutActionAsync } from "../../../redux/actions/userActions";
+import NavbarTop from "../../navbarTop/NavbarTop";
+import NavbarPrincipal from "../../navbar/navbarPrincipal/NavbarPrincipal";
+import NavbarSecondary from "../../navbar/navbarSecondary/NavbarSecondary";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -10,7 +13,12 @@ const Header = () => {
   console.log(user);
 
   return (
-    <div className="header">
+    <>
+    {/* <NavbarTop/> */}
+    {/* <NavbarPrincipal/> */}
+    <NavbarSecondary/>
+   
+    {/* <div className="header">
       <div className="header__top">
         <div className="header__left">
           <figure>
@@ -61,7 +69,8 @@ const Header = () => {
       </Carousel.Item>
     </Carousel>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 };
 

@@ -1,0 +1,25 @@
+.cartItem {
+    &__row {
+        display: flex;
+        flex-direction: row;
+       // flex-wrap: nowrap;
+       
+        
+    }
+    &__quantity {
+    border-radius: 2rem;
+    }
+    &__thImg {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cartItem {
+        &__quantity {
+        border-radius: 1rem;
+       // padding: .5rem;
+    }
+}
+    
+}

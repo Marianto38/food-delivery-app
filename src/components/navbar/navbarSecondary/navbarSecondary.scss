@@ -1,0 +1,17 @@
+.navbarSecondary {
+    &__btn {
+        &__categorys {
+            background-color: aliceblue;
+            border: none;
+            border-radius: 1rem;
+            padding: .5rem 1rem;
+
+        }
+    }
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+        margin: 1rem 0;
+    }
+}

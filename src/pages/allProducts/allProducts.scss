@@ -1,0 +1,19 @@
+.allProducts {
+    &__section {
+    padding: 1rem 3rem;
+    }
+    &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    &__btn{
+        padding: .5rem 2rem;
+        border-radius: 2rem;
+        background-color: aqua;
+        border: none;
+        
+    }
+}
+}

@@ -1,0 +1,10 @@
+.bannerPrincipal {
+    &__info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__section {
+        padding: 0 2rem;
+    }
+}

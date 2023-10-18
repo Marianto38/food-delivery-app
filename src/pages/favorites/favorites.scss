@@ -1,0 +1,15 @@
+.favorites {
+    &__products {
+        justify-content: flex-start;
+    }
+
+    &__section {
+        padding: 2rem 5rem;
+    }
+}
+
+    @media (max-width: 600px) {
+        .favorites__section {
+            padding: 1rem;
+        }
+    }

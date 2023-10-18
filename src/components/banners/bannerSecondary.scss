@@ -1,0 +1,17 @@
+.bannerSecondary {
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+    &__section {
+        padding: 0 2rem;
+    }
+    }
+    .img-publi-3 {
+        position: absolute;
+        width: 50%;
+        bottom: 0%;
+        right: 0%;
+        z-index: -1;
+      }
+     

@@ -1,0 +1,51 @@
+.navbarPrincipal {
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+        
+    }
+    &__iconCart {
+        cursor: pointer;
+    }
+    &__container__cart {
+        position: absolute;
+        top: 4rem;
+        right: 2rem;
+        background-color: aliceblue;
+        z-index: 99;
+        padding: 1.5rem;
+        border-radius: 2rem;
+    }
+    &__productCard {
+        position: relative;
+        &__name {
+            font-size: .8rem;
+            text-align: start;
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &__quantity {
+            font-weight: bold;
+        }
+
+    }
+    &__containerCheckout {
+        margin-top: 1rem;
+    }
+
+    &__btn__delete {
+        position: absolute;
+        top: .3rem;
+        right: .5rem;
+
+    }
+}
+
+input#mySearch {
+border: 1px solid rgb(255, 0, 208);
+    height: 2.5rem;
+    margin: 0 !important;
+}

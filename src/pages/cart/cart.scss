@@ -1,0 +1,9 @@
+.cart__section {
+    padding: 2rem 5rem;
+}
+
+@media (max-width: 600px) {
+    .cart__section {
+        padding: 1rem;
+    }
+}
