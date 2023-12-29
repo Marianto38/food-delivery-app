@@ -27,3 +27,22 @@ img.MuiBox-root {
 .css-1384nzf-MuiMobileStepper-dots {
     margin-bottom: 8px;
 }
+
+/* Estilos generales */
+
+/* Consulta de medios para pantallas pequeñas */
+@media only screen and (max-width: 767px) {
+    /* Estilos específicos para pantallas pequeñas */
+  }
+  
+  /* Consulta de medios para pantallas medianas */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Estilos específicos para pantallas medianas */
+  }
+  
+  /* Consulta de medios para pantallas grandes */
+  @media only screen and (min-width: 992px) {
+    /* Estilos específicos para pantallas grandes */
+    .container1 {
+  }
+}

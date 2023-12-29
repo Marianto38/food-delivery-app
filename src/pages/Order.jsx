@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Footer from '../components/home/footer/Footer'
 
 const Order = () => {
   const count = 1
@@ -14,7 +15,7 @@ const Order = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/dish')
+    navigate('/home')
   }
 
   const { orders } = useSelector((store) => store.orders);
@@ -52,6 +53,7 @@ const Order = () => {
 
       />
     </div>
+    <Footer/>
     </>
   )
 }
